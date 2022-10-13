@@ -42,8 +42,7 @@ class Usuario  {
 
 const obj = new Usuario ('Marcia', 'Diaz', [{nombre: 'Prohibido sucidarse en primaver', autor: 'Alejandro Casona'}],[{nombre: 'gato'}], [{nombre: 'loro'}])
 
-Usuario.addMascotas({nombre: 'perro'})
-Usuario.addBook("cien años de soledad", "Gabriel Garcia Marquez")
+
 
 console.log(obj.nombre)
 console.log(obj.apellido)
