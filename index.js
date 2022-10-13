@@ -5,7 +5,7 @@ class Usuario  {
         this.nombre = nombre;
         this.apellido = apellido;
         
-        this.mascotas = mascotas;
+        this.mascotas = [mascotas];
         this.libros = [{
             nombre: libros,
             autor: undefined
@@ -17,13 +17,14 @@ class Usuario  {
         console.log('el usuario es ' + this.nombre + ' ' + this.apellido);
     }
 
-    addMascotas (mascota) {
+    addMascota (mascota) {
         this.mascotas.push(mascota);
+        return console.log(this.mascotas)
         
     }
 
     countMascotas() {
-        return this.mascotas.lenght;
+        return (this.mascotas.lenght);
     }
 
     addBook (nombre, autor) {
@@ -39,7 +40,7 @@ class Usuario  {
     }
 }
 
-const usuario = new Usuario ('Marcia', 'Diaz', [{nombre: 'Prohibido sucidarse en primaver', autor: 'Alejandro Casona'}],[{nombre: 'gato'}], [{nombre: 'loro'}])
+const obj = new Usuario ('Marcia', 'Diaz', [{nombre: 'Prohibido sucidarse en primaver', autor: 'Alejandro Casona'}],[{nombre: 'gato'}], [{nombre: 'loro'}])
 
 usuario.addMascotas({nombre: 'perro'})
 usuario.addBook("cien años de soledad", "Gabriel Garcia Marquez")
