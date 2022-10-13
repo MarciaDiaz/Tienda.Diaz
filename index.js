@@ -14,7 +14,7 @@ class Usuario  {
 
 
     getFullName () {
-        console.log('el usuario es ' + this.nombre + ' ' + this.apellido);
+        console.log('el Usuario es ' + this.nombre + ' ' + this.apellido);
     }
 
     addMascota (mascota) {
@@ -42,8 +42,8 @@ class Usuario  {
 
 const obj = new Usuario ('Marcia', 'Diaz', [{nombre: 'Prohibido sucidarse en primaver', autor: 'Alejandro Casona'}],[{nombre: 'gato'}], [{nombre: 'loro'}])
 
-usuario.addMascotas({nombre: 'perro'})
-usuario.addBook("cien años de soledad", "Gabriel Garcia Marquez")
+Usuario.addMascotas({nombre: 'perro'})
+Usuario.addBook("cien años de soledad", "Gabriel Garcia Marquez")
 
 console.log(obj.nombre)
 console.log(obj.apellido)
