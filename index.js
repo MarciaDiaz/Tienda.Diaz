@@ -50,7 +50,7 @@ console.log(obj.libros)
 console.log(obj.mascotas)
 
 obj.getFullName()
-obj.addMascotas("perro")
+obj.addMascota("perro")
 obj.countMascotas()
 obj.addBook("un libro", "un autor")
 obj.getBookNames()
