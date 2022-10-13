@@ -5,11 +5,9 @@ class Usuario  {
         this.nombre = nombre;
         this.apellido = apellido;
         
-        this.mascotas = [mascotas];
-        this.libros = [{
-            nombre: libros,
-            autor: undefined
-        }]
+        this.mascotas = mascotas;
+        this.libros = libros
+        
     }
 
 
