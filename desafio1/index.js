@@ -4,7 +4,6 @@ class Usuario  {
 
         this.nombre = nombre;
         this.apellido = apellido;
-        
         this.mascotas = mascotas;
         this.libros = libros
         
