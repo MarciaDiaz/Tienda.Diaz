@@ -1,6 +1,8 @@
 const fs = require("fs");
 
 class Contenedor {
+
+   
     constructor() {
         this.filePath = "./productos.json";
     };
