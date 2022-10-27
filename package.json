@@ -1,0 +1,24 @@
+{
+  "name": "tienda.diaz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarciaDiaz/Tienda.Diaz.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarciaDiaz/Tienda.Diaz/issues"
+  },
+  "homepage": "https://github.com/MarciaDiaz/Tienda.Diaz#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
