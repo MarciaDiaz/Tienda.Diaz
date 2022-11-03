@@ -2,34 +2,75 @@
 const Contenedor = require("./classContenedor");
 const fs = require("fs");
 
+
 //requerimos express
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 8080;
 
-const contenedor = new Contenedor('productos.txt');
+app.use(express.json());
+app.use(express.urlencoded({ extended: true}));
 
-//Instacio el objeto clase contenedor
-app.get('/', (req, res) => {
-    res.send("Desafío 3 - /devuelve todos los productos. /devuelve un producto al azar")
-  })
 
-app.get('/productos', async(req, res) => {
+const contenedor = new Contenedor('productos.json');
+
+app.use('public', express.static(__dirname + 'public'));
+
+ app.get('/', (req, res) =>{
+  res.send('<h1>holaa</h2>')
+ })
+
+  //TODOS LOS PRODUCTOS
+
+app.get('/api/productos', async(req, res) => {
     /* Pido todos los productos */
     const productos = await contenedor.getAll();
 
     res.send(productos);
 })
 
-app.get('/productoRandom', async(req, res) => {
-    const maxId = 8; //tengo solo 8 productos con id de 1 a 8
-    const numRandom = Math.floor(Math.random() * maxId);
 
-    /* Pido el producto con id generado de manera aleatoria */
-    const producto = await contenedor.getById(numRandom);
+//POSTEAR PRODUCTO
 
-    res.send(producto);
-  })
+app.post('/api/productos', (req, res) =>
+{
+  const  {body } = req;
+  console.log(body);
+  res.json('ok')
+});
+
+//PRODUCTO por ID
+
+app.get('/api/productos/:id', (req, res) =>{
+  const { id } = req.params;
+  
+const productosEncontrado = productos.find((productos)=> productos.id);
+  res.json('ok')
+});
+
+//PUT, modificar
+
+app.put('/api/productos/:id', (req, res) => {
+   const id = req.params.id;
+   const body = req.body;
+   const idencontrado = productos.findIndex((productos) => productos.id == id)
+   console.log(idencontrado)
+   res.json('ok');
+})
+
+//DELETE, eliminar
+
+app.delete('/api/productos/id', (req, res) =>{
+  const { id } = req.params;
+  productos = productos.filter((productos) => productos.id !=id);
+  res.json(productos)
+});
+
+
+
+
+
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`)
