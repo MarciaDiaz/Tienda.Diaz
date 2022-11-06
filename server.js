@@ -1,7 +1,7 @@
 
 const Contenedor = require("./classContenedor");
 const fs = require("fs");
-
+const multer = require ('multer');
 
 //requerimos express
 const express = require('express');
@@ -36,7 +36,7 @@ app.post('/api/productos', (req, res) =>
 {
   const  {body } = req;
   console.log(body);
-  res.json('ok')
+  res.send('ok');
 });
 
 //PRODUCTO por ID
@@ -45,7 +45,16 @@ app.get('/api/productos/:id', (req, res) =>{
   const { id } = req.params;
   
 const productosEncontrado = productos.find((productos)=> productos.id);
-  res.json('ok')
+if (id > productos.length) {
+  res.json({
+      error: "Producto no encontrado",
+      productList: productos,
+  });
+} else {
+  res.json ({ producto: productosEncontrado });
+}
+
+
 });
 
 //PUT, modificar
@@ -67,7 +76,40 @@ app.delete('/api/productos/id', (req, res) =>{
 });
 
 
+//FORMULARIO, Respondemos con un archivo
 
+app.get('/formulario', (req,res) =>{
+  res.sendFile(__dirname + '/index.html');
+});
+
+//MULTER
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads');
+  },
+  filename: (req, file, cb) => {
+    cb(
+      null,
+      file.fieldname +
+        '-' +
+        Date.now() +
+        '.' +
+        file.originalname.split('.').pop()
+    );
+  },
+});
+const upload = multer({ storage: storage });
+
+app.post('/uploadfile',upload.single('myFile'), (req, res) =>{
+    const file = req.file;
+    if (!file) {
+      res.send({ error: true});
+    } else{
+      res.send(file);
+    }
+
+});
 
 
 
