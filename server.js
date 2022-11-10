@@ -41,10 +41,12 @@ app.post('/api/productos', (req, res) =>
 
 //PRODUCTO por ID
 
-app.get('/api/productos/:id', (req, res) =>{
+app.get('/api/productos/id', (req, res) =>{
   const { id } = req.params;
   
-const productosEncontrado = productos.find((productos)=> productos.id);
+const productosEncontrado = productos.find((productos)=> productos.id === id);
+
+
 if (id > productos.length) {
   res.json({
       error: "Producto no encontrado",
